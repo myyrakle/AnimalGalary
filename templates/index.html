@@ -1,8 +1,68 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+        <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+    </head>
     <body>
-        <h1>붐!!</h1>
-        <img src={{image_path}}>
+        <!-- Navigation -->
+        {%include "shared_components/nav.html"%}
+
+        <header class="masthead" >
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <div class="post-heading">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <button onclick="changeImageRandom()">붐</button>
+          <article>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">  
+                    <div class="text-center">
+                        <img id="image" src={{image_path}} class="img-thumbnail">
+                    </picture>                
+                </div>
+              </div>
+            </div>
+          </article>
+        
+          <hr>
+        
+          <!-- Footer -->
+          {%include "shared_components/footer.html"%}
+    
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function changeImageRandom()
+            {
+                $.ajax({
+                    url: '/api/new_random',
+                    type: 'GET',
+                    success: function(data){
+                        $('#image').attr('src', data);
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

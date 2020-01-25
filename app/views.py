@@ -11,7 +11,10 @@ def index(request):
     template = loader.get_template('index.html')
     
     context = {
-        'image_path': 'static/image/'+get_random_image_filename()
+        'image_path': '/static/image/'+get_random_image_filename()
     }
 
     return HttpResponse(template.render(context, request))
+
+def get_random_image_filepath(request):
+    return HttpResponse('/static/image/'+get_random_image_filename())
