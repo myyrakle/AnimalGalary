@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {%include "shared_components/title.html"%}
+        {%include "shared_components/metas.html"%}
+
         <!-- Bootstrap core CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,12 +30,12 @@
             </div>
           </header>
 
-          <button onclick="changeImageRandom()">붐</button>
           <article>
             <div class="container">
               <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">  
                     <div class="text-center">
+                        <button class="btn btn-outline-success" onclick="changeImageRandom()">Pop</button><hr>
                         <img id="image" src={{image_path}} class="img-thumbnail">
                     </picture>                
                 </div>
